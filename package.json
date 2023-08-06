@@ -1,8 +1,8 @@
 {
-  "name": "electron-kook",
-  "version": "1.1.1",
+  "name": "KOOK",
+  "version": "1.5.9",
   "description": "A minimal Electron application",
-  "homepage": "./",
+  "homepage": "https://github.com/hotspringGG/",
   "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -10,7 +10,6 @@
     "dist:linux": "electron-builder --linux AppImage",
     "dist:macOS": "electron-builder --mac",
     "dist:win": "electron-builder --win",
-    "postinstall": "electron-builder install-app-deps",
     "publish": "electron-forge publish",
     "release": "electron-builder --mac --windows --publish always",
     "electron": "electron",
@@ -20,7 +19,7 @@
     "app:dir": "electron-builder --dir",
     "app:dist": "electron-builder"
   },
-  "repository": "github:rootphantomer/electron-kook",
+  "repository": "github:hotspringGG/electron-kook",
   "keywords": [
     "Electron",
     "kook",
@@ -32,11 +31,11 @@
   },
   "license": "MIT",
   "build": {
-    "productName": "electron-kook",
-    "appId": "rootphantomer.electron.kook",
-    "copyright": "electron-kook",
+    "productName": "KOOK",
+    "appId": "HotspringDev.electron.kook",
+    "copyright": "KOOK",
     "mac": {
-      "icon": "./build/icons/icon.icns",
+      "icon": "static/icon.icns",
       "hardenedRuntime": true,
       "entitlements": "entitlements.mac.plist",
       "extendInfo": {
@@ -47,9 +46,12 @@
   },
   "config": {
     "forge": {
+      "packagerConfig": {
+        "icon": "./build/icons/icon.icns"
+      },
       "publishers": [
         {
-          "name": "@rootphantomer/electron-kook",
+          "name": "@rootphantomer/KOOK",
           "config": {
             "repository": {
               "owner": "rootphantomer",
@@ -57,6 +59,49 @@
             },
             "prerelease": false,
             "draft": true
+          }
+        }
+      ],
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "KOOK",
+            "title": "KOOK",
+            "authors": "HotspringDev",
+            "exe": "KOOK.exe"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "config": {
+            "name": "KOOK"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "name": "KOOK",
+            "options": {
+              "maintainer": "HotspringDev",
+              "categories": [
+                "Utility"
+              ]
+            }
+          }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {
+            "name": "KOOK",
+            "options": {
+              "maintainer": "HotspringDev",
+              "homepage": "https://github.com/hotspringGG/",
+              "icon": "static/favicon.ico",
+              "categories": [
+                "Utility"
+              ]
+            }
           }
         }
       ]
@@ -76,18 +121,39 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.2.1",
+    "@electron-forge/core": "^6.2.1",
+    "@electron-forge/core-utils": "^6.2.1",
     "@electron-forge/maker-deb": "^6.2.1",
     "@electron-forge/maker-rpm": "^6.2.1",
     "@electron-forge/maker-squirrel": "^6.2.1",
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/publisher-github": "^6.2.1",
-    "electron": "^25.3.0",
-    "electron-builder": "^24.4.0"
-  },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "@electron-forge/shared-types": "^6.2.1",
+    "@electron/rebuild": "^3.2.13",
+    "@malept/cross-spawn-promise": "^2.0.0",
+    "@sindresorhus/is": "^5.6.0",
+    "@szmarczak/http-timer": "^5.0.1",
+    "chalk": "^5.3.0",
+    "cross-spawn": "^7.0.3",
+    "debug": "^4.3.4",
+    "detect-libc": "^2.0.2",
+    "electron": "^25.4.0",
+    "electron-builder": "^24.6.3",
+    "fs-extra": "^11.1.1",
+    "got": "^13.0.0",
+    "graceful-fs": "^4.2.11",
+    "jsonfile": "^6.1.0",
+    "ms": "^2.1.3",
+    "path-key": "^4.0.0",
+    "shebang-command": "^2.0.0",
+    "shebang-regex": "^4.0.0",
+    "universalify": "^2.0.0",
+    "which": "^3.0.1"
   },
   "resolutions": {
     "upath": "^1.0.5"
+  },
+  "dependencies": {
+    "isexe": "^3.1.1"
   }
 }
