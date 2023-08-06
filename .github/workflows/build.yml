@@ -19,12 +19,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set Windows environment variables
-        run: |
-          export npm_config_runtime=electron
-          export npm_config_target=12.0.0 # Change this to your Electron version (if needed)
-          export npm_config_arch=x64
-
       - name: Build Electron app for Windows
         run: npm run make
 
@@ -80,12 +74,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Set Linux environment variables
-        run: |
-          export npm_config_runtime=electron
-          export npm_config_target=12.0.0 # Change this to your Electron version (if needed)
-          export npm_config_arch=x64
 
       - name: Build Electron app for Linux
         run: npm run make
