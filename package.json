@@ -28,7 +28,7 @@
     "appId": "HotspringDev.electron.KOOK",
     "copyright": "KOOK",
     "mac": {
-      "icon": "static/KOOK.jpeg",
+      "icon": "static/KOOK.ico",
       "hardenedRuntime": true,
       "entitlements": "entitlements.mac.plist",
       "extendInfo": {
@@ -37,13 +37,13 @@
       }
     },
     "win": {
-      "icon": "static/KOOK.jpeg",
+      "icon": "static/KOOK.ico",
       "target": [
         "nsis"
       ]
     },
     "linux": {
-      "icon": "static/KOOK.jpeg",
+      "icon": "static/KOOK.ico",
       "target": [
         "AppImage",
         "deb",
