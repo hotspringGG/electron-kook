@@ -1,110 +1,56 @@
 {
   "name": "KOOK",
   "version": "1.5.9",
-  "description": "A minimal Electron application",
+  "description": "KOOK Electron client",
   "homepage": "https://github.com/hotspringGG/",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron-forge start",
     "pack": "electron-builder --dir",
-    "dist:linux": "electron-builder --linux AppImage",
+    "dist:linux": "electron-builder --linux",
     "dist:macOS": "electron-builder --mac",
     "dist:win": "electron-builder --win",
-    "publish": "electron-forge publish",
-    "release": "electron-builder --mac --windows --publish always",
+    "release": "electron-builder --mac --windows --linux --publish always",
     "electron": "electron",
-    "build-all": "electron-builder",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "app:dir": "electron-builder --dir",
-    "app:dist": "electron-builder"
+    "build": "electron-builder"
   },
   "repository": "github:hotspringGG/electron-kook",
   "keywords": [
     "Electron",
-    "kook",
-    "开黑啦"
+    "KOOK"
   ],
   "author": {
-    "name": "ph4nt0mer",
-    "email": "root@ph4nt0mer.xyz"
+    "name": "HotspringDev",
+    "email": "hotspring@requan.top"
   },
   "license": "MIT",
   "build": {
     "productName": "KOOK",
-    "appId": "HotspringDev.electron.kook",
+    "appId": "HotspringDev.electron.KOOK",
     "copyright": "KOOK",
     "mac": {
-      "icon": "static/icon.icns",
+      "icon": "static/favicon.ico",
       "hardenedRuntime": true,
       "entitlements": "entitlements.mac.plist",
       "extendInfo": {
         "NSMicrophoneUsageDescription": "授权访问麦克风",
         "NSCameraUsageDescription": "授权访问摄像头"
       }
-    }
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon": "./build/icons/icon.icns"
-      },
-      "publishers": [
-        {
-          "name": "@rootphantomer/KOOK",
-          "config": {
-            "repository": {
-              "owner": "rootphantomer",
-              "name": "electron-kook"
-            },
-            "prerelease": false,
-            "draft": true
-          }
-        }
-      ],
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "KOOK",
-            "title": "KOOK",
-            "authors": "HotspringDev",
-            "exe": "KOOK.exe"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "config": {
-            "name": "KOOK"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {
-            "name": "KOOK",
-            "options": {
-              "maintainer": "HotspringDev",
-              "categories": [
-                "Utility"
-              ]
-            }
-          }
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {
-            "name": "KOOK",
-            "options": {
-              "maintainer": "HotspringDev",
-              "homepage": "https://github.com/hotspringGG/",
-              "icon": "static/favicon.ico",
-              "categories": [
-                "Utility"
-              ]
-            }
-          }
-        }
+    },
+    "win": {
+      "icon": "static/favicon.ico",
+      "target": [
+        "nsis"
       ]
+    },
+    "linux": {
+      "icon": "static/favicon.ico",
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "pacman"
+      ],
+      "category": "Utility"
     }
   },
   "browserslist": {
@@ -120,15 +66,6 @@
     ]
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.2.1",
-    "@electron-forge/core": "^6.2.1",
-    "@electron-forge/core-utils": "^6.2.1",
-    "@electron-forge/maker-deb": "^6.2.1",
-    "@electron-forge/maker-rpm": "^6.2.1",
-    "@electron-forge/maker-squirrel": "^6.2.1",
-    "@electron-forge/maker-zip": "^6.2.1",
-    "@electron-forge/publisher-github": "^6.2.1",
-    "@electron-forge/shared-types": "^6.2.1",
     "@electron/rebuild": "^3.2.13",
     "@malept/cross-spawn-promise": "^2.0.0",
     "@sindresorhus/is": "^5.6.0",
